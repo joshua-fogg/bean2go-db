@@ -1,0 +1,30 @@
+{
+  "name": "bean2go-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "knex": "knex"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshua-fogg/bean2go-db.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshua-fogg/bean2go-db/issues"
+  },
+  "homepage": "https://github.com/joshua-fogg/bean2go-db#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "knex": "^0.13.0",
+    "sqlite3": "^3.1.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
