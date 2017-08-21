@@ -5,7 +5,6 @@ exports.up = function(knex, Promise) {
         t.integer('order_id').references('orders.id')
         t.integer('coffee_id').references('coffee_list.id')
         t.string('person_name')
-
     })
   
 };
