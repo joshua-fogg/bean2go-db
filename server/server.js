@@ -2,9 +2,6 @@ var express = require('express')
 var server = express()
 var path = require('path')
 
-var config = require('./knexfile').development
-var db = require('knex')(config)
-
 const apiRoutes = require('./api-routes') // directing to api-routes for api services.
 
 server.use(express.static(path.join(__dirname, 'public'))) // setting server public folder
