@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
         t.string('order_name')
         t.string('created_id')
         t.string('pickup_time')
+        t.timestamp('created_at').defaultTo(knex.fn.now())
         t.boolean('completed')
         t.boolean('paid')
     })
