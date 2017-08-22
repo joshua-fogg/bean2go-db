@@ -4,7 +4,7 @@ const connection = require('knex')(config)
 
 module.exports = {
     getCoffeeList,
-    getOrder,
+    getOrderByID,
     getOrders,
     addOrder
 }
@@ -13,6 +13,16 @@ module.exports = {
 function getCoffeeList(conn) {
     const db = conn || connection
     return db('coffee_list').select('*')
+}
+
+function getOrderByID(id, conn) {
+    const db = conn || connection
+    return db('orders').where(id, '=', 'orders.id')
+}
+
+function getOrders(conn) {
+    const db = conn || connection
+    return db('orders').select('*')
 }
 
 //addOrder: add order to orders && add order.items to order_items
@@ -31,11 +41,6 @@ function addOrder(order, conn) {
             }
             return
         }))
-}
-
-function getOrders(conn) {
-    const db = conn || connection
-    return db('orders').select('*')
 }
 
 function removeOrder(messageId, conn) {
