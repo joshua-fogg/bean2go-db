@@ -10,7 +10,7 @@ const apiRoutes = require('./api-routes') // directing to api-routes for api ser
 server.listen(PORT, function() {
     console.log('Listening on port', PORT)
 })
-server.use(express.static(path.join(__dirname, 'public'))) // setting server public folder
+server.use(express.static(path.join(__dirname, '../public'))) // setting server public folder
 
 
 server.use('/api/v1', apiRoutes) // parsing api calls to api-routes

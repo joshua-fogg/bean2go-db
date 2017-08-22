@@ -19,18 +19,18 @@ function getCoffeeList(conn) {
 function addOrder(order, conn) {
     const db = conn || connection
     return db('orders').insert([{
-        order_name: order.orderName,
-        pickup_time: order.recipientId,
-        completed: order.completed,
-        created_at: new Date()
-            .then(
-                db('order_items').insert([{ //this will not work atm... multiple items
-                    order_id: order.orderId,
-                    coffee_id: order.coffeeId,
-                    personal_name: order.personName
-                }])
-            )
-    }])
+            order_name: order.orderName,
+            pickup_time: order.recipientId,
+            completed: order.completed,
+            created_at: new Date()
+        }], 'id')
+        .then(addOrderItems(newOrderId))
+        .catch(handleError((err) => {
+            if (err) {
+                return console.log(err)
+            }
+            return
+        }))
 }
 
 function getOrders(conn) {
@@ -43,4 +43,16 @@ function removeOrder(messageId, conn) {
     return db('order')
         .where('id', messageId)
         .del()
+}
+
+function addOrderItems(newOrderId) {
+    newOrderId = newOrderId[0]
+    const orderItems = order.orderItems.map((orderItem) => {
+        return {
+            order_id: newOrderId,
+            coffee_id: orderItem.coffeeId,
+            personal_name: orderItem.personalName
+        }
+    })
+    return db('order_items').insert(orderItems)
 }
